@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from 'cors';
 import Task from "./models/Task.js";
 dotenv.config()
 
@@ -12,6 +13,8 @@ console.log("Connected to DB");
 const port = process.env.PORT;
 const app = express();
 
+// middlewares
+app.use(cors());
 app.use(express.json());
 
 app.get("/tasks", async (req, res) => {
